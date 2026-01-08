@@ -18,7 +18,7 @@ _Demonstration of the 'slice' destruction, with the 'bottom' part of the cut rem
 
 _The reverse of the previous cut._
 
-The basic destruction functions will result in 2 distinct meshes with a tri count approximately equal to the original tri-count plus the number of faces that are cut by the plane. So, effectively, Tm1 + Tm2 = To + 2*Ncf. This means that performance may not be as effective on highly complex meshes, but your mileage may vary. Performance for basic destruction, however, should be quite good and suited for real-time applications. It should be noted that pre-computed destruction is still likely the superior option for applications where fully dynamic destruction is not essential, as it grants you far more control over triggers and what kind of debris will be generated, as well as being more predictable in terms of performance.
+The basic destruction functions will result in 2 distinct meshes with a tri count approximately equal to the original tri-count plus the number of faces that are cut by the plane. So, effectively, T<sub>m1</sub> + T<sub>m2</sub> = T<sub>M</sub> + 2*N<sub>cf</sub>. This means that performance may not be as effective on highly complex meshes, but your mileage may vary. Performance for basic destruction, however, should be quite good and suited for real-time applications. It should be noted that pre-computed destruction is still likely the superior option for applications where fully dynamic destruction is not essential, as it grants you far more control over triggers and what kind of debris will be generated, as well as being more predictable in terms of performance.
 
 ## In-Development
 
