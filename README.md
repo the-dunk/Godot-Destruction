@@ -11,7 +11,7 @@ The 'basic' destruction (making slices and holes) makes use of consecutive plane
 
 ![Demonstration of the 'slice' function. A grey, metallic, pentagonal prism appears over a default Godot environment. The cursor is placed on the bottom right corner of the shape and dragged to the top left. A glowing orange line is generated along the path while sparks fly out. After reaching the top, the cursor is released, and all of the shape lying above the line disappears, leaving a smooth cut surface on the remaining mesh.](https://github.com/the-dunk/Godot-Destruction/assets/3682609/cb9cd539-57f9-4656-836e-cb69bf5bdc87)
 
-_Demonstration of the 'slice' destruction, with the 'bottom' part of the cut removed for visual clarity._
+_Demonstration of the 'slice' destruction, with the 'bottom' part of the cut not currently generated for the sake of clarity_
 
 
 ![The same demonstration of the 'slice' function, but with an opposite cut direction. This shows the other piece that would be generated from the cut, with the same smooth surface.](https://github.com/the-dunk/Godot-Destruction/assets/3682609/77e719e2-2cdf-4908-937f-b3ec9397aa0f)
@@ -33,3 +33,9 @@ Any mesh allowed to be cut will obey the global destruction threshhold, which is
 ## Planned
 
 'Continuous' destruction is a hybrid between 'basic' and 'complex' destruction. It allows for a continuous cut with different pipelines depending on the type of cut. If a cut starts at one end of the mesh and goes all the way to another side, it functions similarly to multiple consecutive slices. If a cut begins within a mesh and connects with itself (i.e. the line of the cut intersects a previous point on the cut) or is within a variable threshhold distance of another point on the mesh, a convex hull is generated around the cut points and used as though it is a hole. Finally, if a 'hole' is not drawn but the line also does not fully bisect the object, a special pipeline is used that effectively 'crops' the cut area down to the bounds of the cut, generating 3 initial meshes and applying the same line method as before to the center slice.
+
+'Tunneling' destruction is a very simple and performant approach to destruction that does not modify the original mesh in any way-- instead, the process involves simply defining a hole area that does the following:
+- creates two simple meshes at the point that extends through the originalmesh-- one for visuals and one for collisions
+- applies a shader to that mesh utilizing the new stencil buffer access in Godot 4.0 to visually create a hole in the object
+- Set that region to have no collisions, thus allowing objects to pass through
+This is a really lightweight way to achieve the types of holes seen in games like [Donut County](https://store.steampowered.com/app/702670/Donut_County/).
