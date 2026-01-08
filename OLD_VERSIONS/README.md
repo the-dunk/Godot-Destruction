@@ -1,3 +1,4 @@
+# What is this horrifying code?
 This is the original version of the WIP destruction system that went on hiatus due to taking on a new job almost immediately after posting about the project. I eventually decided it was silly to have this repo sitting out here with absolutely no code to even look at for anyone curious.
 
 Fair warning, this stuff is very rough. This was done in a project for my at-the-time game idea, so it was kind of just slapped onto a generic 3D camera controller. There is borderline no commenting to speak of-- trust me, I've learned that lesson after trying to comprehend the inner workings of the insane person who made this three years ago. Me.
@@ -28,3 +29,4 @@ My hope with releasing this extremely janky old code is to accomplish 2 things:
 2. To let the few people who have seen this repo at least see what was used to generate the initial gifs and know it wasn't just a fever dream!
 
 Thanks for bearing with me!
+
