@@ -1,0 +1,14 @@
+[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://dp7f5ec2xikue"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_fsqtp"]
+input_name = "time"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_fsqtp")
+nodes/fragment/2/position = Vector2(-820, 280)

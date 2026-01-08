@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp66r40cbfcmu"]
+
+[ext_resource type="Material" uid="uid://cgqlymks4s0nx" path="res://Original Scene/Assets/fire/hotfire.tres" id="1_psidj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_74f1r"]
+material = ExtResource("1_psidj")
+size = Vector3(1, 0.04, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kql62"]
+material = ExtResource("1_psidj")
+radius = 0.05
+height = 0.1
+
+[node name="CutPlane" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_74f1r")
+
+[node name="CutPointStart" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_kql62")
+
+[node name="CutPointEnd" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_kql62")

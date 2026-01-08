@@ -1,0 +1,20 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://blgxkm6klry0m"]
+
+[ext_resource type="Texture2D" uid="uid://d2p1t8rd4dys3" path="res://Assets/Temp/Textures/idkmagma_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bg7myxb7s2uhf" path="res://Assets/Temp/Textures/idkmagma_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dna168akxw3nu" path="res://Assets/Temp/Textures/idkmagma_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bpllypc18wmsj" path="res://Assets/Temp/Textures/idkmagma_emission.png" id="5"]
+
+[resource]
+albedo_texture = ExtResource("1")
+orm_texture = ExtResource("2")
+emission_enabled = true
+emission_texture = ExtResource("5")
+normal_enabled = true
+normal_scale = 0.0
+normal_texture = ExtResource("3")
+heightmap_enabled = true
+heightmap_scale = 25.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32

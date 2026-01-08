@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://fexpbeurovdm"]
+
+[ext_resource type="ArrayMesh" uid="uid://c0jyp51uqackl" path="res://Original Scene/weirdhouse.obj" id="2_alpho"]
+[ext_resource type="Script" uid="uid://nis082bkyo4h" path="res://Original Scene/giveinfo.gd" id="3_hiwxr"]
+[ext_resource type="Script" uid="uid://drtgv7r4u42fy" path="res://Original Scene/TEST_CAMERA.gd" id="4_vp321"]
+[ext_resource type="PackedScene" uid="uid://cp66r40cbfcmu" path="res://Original Scene/cut_plane.tscn" id="5_36dom"]
+[ext_resource type="PackedScene" uid="uid://7y10glq77llh" path="res://Original Scene/SparkySparky.tscn" id="6_0td1y"]
+[ext_resource type="Material" uid="uid://blgxkm6klry0m" path="res://Original Scene/Assets/magma texture/idkmagma.tres" id="6_vp321"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aygwp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bjckh"]
+
+[sub_resource type="Sky" id="Sky_1b6n4"]
+sky_material = SubResource("ProceduralSkyMaterial_bjckh")
+
+[sub_resource type="Environment" id="Environment_0q8m1"]
+background_mode = 2
+sky = SubResource("Sky_1b6n4")
+ambient_light_color = Color(0.529412, 0.529412, 0.529412, 1)
+ambient_light_sky_contribution = 0.65
+ambient_light_energy = 7.4
+glow_enabled = true
+glow_intensity = 5.85
+glow_map = SubResource("NoiseTexture2D_aygwp")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k8jap"]
+points = PackedVector3Array(-1, -0.467277, -1, -1, -0.467277, 1, -1, 0.999976, -1, 1, -0.467277, -1, 1, -0.467277, 1, -1, 0.999976, 1, 0, 1.88807, -1, 1, 0.999976, -1, 1, 0.999976, 1, 0, 1.88807, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0q8m1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.470411, 0.882447, 0, -0.882447, 0.470411, 0, 6.92619, 4.2501)
+visible = false
+light_color = Color(1, 1, 0.85098, 1)
+light_energy = 1.762
+
+[node name="Node3D" parent="." instance=ExtResource("6_0td1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.93821)
+visible = false
+visibility_aabb = AABB(-4, -4, -3.93164, 8, 8, 8)
+
+[node name="ZJakeBody" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="ZJakeBody"]
+mesh = ExtResource("2_alpho")
+skeleton = NodePath("")
+script = ExtResource("3_hiwxr")
+
+[node name="Collision" type="CollisionShape3D" parent="ZJakeBody"]
+shape = SubResource("ConvexPolygonShape3D_k8jap")
+
+[node name="CameraJoint" type="Node3D" parent="."]
+visible = false
+
+[node name="Cam" type="Camera3D" parent="CameraJoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.85048)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraJoint/Cam"]
+light_color = Color(1, 0.803922, 0.988235, 1)
+light_energy = 2.067
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.0565, 0)
+size = Vector3(42.6797, 2.81762, 66.4388)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, -4.64)
+current = true
+script = ExtResource("4_vp321")
+cut_plane_scene = ExtResource("5_36dom")
+spark_particle_scene = ExtResource("6_0td1y")
+melt_material = ExtResource("6_vp321")
+
+[node name="Sprite3D" type="Sprite3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82626e-08, 0, -0.539809)
+pixel_size = 0.001
+double_sided = false
+no_depth_test = true

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b61y2x8sa3cxw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yp3mj"]
+noise_type = 2
+frequency = 0.079
+fractal_octaves = 1
+cellular_jitter = 2.07
+cellular_return_type = 0
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4pf3u"]
+noise = SubResource("FastNoiseLite_yp3mj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqvkt"]
+albedo_texture = SubResource("NoiseTexture2D_4pf3u")
+
+[node name="Hole" type="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+operation = 2
+radius = 2.896
+sides = 14
+material = SubResource("StandardMaterial3D_xqvkt")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+visible = false
+operation = 2
+radius = 1.129
